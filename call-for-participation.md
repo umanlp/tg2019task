@@ -4,7 +4,10 @@ TextGraphs-13 Shared Task on Explanation Regeneration
 Overview
 --------
 
+Developing methods of automated inference that are able to provide users with compelling human-readable justifications for why the
+answer to a question is correct is critical for domains such as science and medicine, where user trust and detecting costly errors are limiting factors to adoption. One of the central barriers to training question answering models on explainable inference tasks is the lack of gold explanations to serve as training data.
 
+This shared task focuses on TODO: describe the shared task at a high level. 
 
 Important Dates
 ---------------
@@ -23,9 +26,11 @@ Important Dates
 Data
 ----
 
-The data used in this shared task comes from the WorldTree corpus (Jansen et al., 2018). The data includes TODO: discuss data organization.
+The data used in this shared task comes from the WorldTree corpus (Jansen et al., 2018). The data includes TODO: discuss data organization. Include 1 example question, correct/incorrect answers, and explanation for the correct answer. 
 
 Participating systems will be evaluated using TODO: discuss evaluation measure. 
+
+The shared task data distribution includes a baseline that TODO: discuss how the baseline works. The performance of this baseline on the development partition is TODO: summarize the baseline performance. 
 
 
 Terms and Conditions
