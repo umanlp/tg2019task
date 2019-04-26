@@ -40,6 +40,7 @@ You agree not to redistribute the test data except in the manner prescribed by i
 References
 ----------
 
+```
 @InProceedings{jansen2018worldtree,
     author = {Peter Jansen and Elizabeth Wainwright and Steven Marmorstein and Clayton T. Morrison},
     title = {WorldTree: A Corpus of Explanation Graphs for Elementary Science Questions supporting Multi-hop Inference},
@@ -48,6 +49,7 @@ References
     url = {http://cognitiveai.org/wp-content/uploads/2018/02/jansen_et_al_lrec2018_worldtree_computable_explanation_corpus_8pg_cameraready.pdf},
     url_code = {http://cognitiveai.org/explanationbank/}
 }
+```
 
 
 
