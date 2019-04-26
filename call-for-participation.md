@@ -9,15 +9,15 @@ Overview
 Important Dates
 ---------------
 
-xx-xx-xxxx: Example (trial) data release
-xx-xx-xxxx: Training data release
-xx-xx-xxxx: Test data release. Evaluation start
-xx-xx-xxxx: Evaluation end
-xx-xx-xxxx: System description paper deadline
-xx-xx-xxxx: Deadline for reviews of system description papers
-xx-xx-xxxx: Author notifications
-xx-xx-xxxx: Camera-ready description paper deadline
-11-03-2019: TextGraphs-13 workshop
+1. xx-xx-xxxx: Example (trial) data release
+2. xx-xx-xxxx: Training data release
+3. xx-xx-xxxx: Test data release. Evaluation start
+4. xx-xx-xxxx: Evaluation end
+5. xx-xx-xxxx: System description paper deadline
+6. xx-xx-xxxx: Deadline for reviews of system description papers
+7. xx-xx-xxxx: Author notifications
+8. xx-xx-xxxx: Camera-ready description paper deadline
+9. __11-03-2019/11-04-2019__: TextGraphs-13 workshop
 
 
 Data
