@@ -9,21 +9,23 @@ Overview
 Important Dates
 ---------------
 
-1. xx-xx-xxxx: Example (trial) data release
-2. xx-xx-xxxx: Training data release
-3. xx-xx-xxxx: Test data release. Evaluation start
-4. xx-xx-xxxx: Evaluation end
-5. xx-xx-xxxx: System description paper deadline
-6. xx-xx-xxxx: Deadline for reviews of system description papers
-7. xx-xx-xxxx: Author notifications
-8. xx-xx-xxxx: Camera-ready description paper deadline
+1. __xx-xx-xxxx__: Example (trial) data release
+2. __xx-xx-xxxx__: Training data release
+3. __xx-xx-xxxx__: Test data release. Evaluation start
+4. __xx-xx-xxxx__: Evaluation end
+5. __xx-xx-xxxx__: System description paper deadline
+6. __xx-xx-xxxx__: Deadline for reviews of system description papers
+7. __xx-xx-xxxx__: Author notifications
+8. __xx-xx-xxxx__: Camera-ready description paper deadline
 9. __11-03-2019/11-04-2019__: TextGraphs-13 workshop
 
 
 Data
 ----
 
-The 
+The data used in this shared task comes from the WorldTree corpus (Jansen et al., 2018). The data includes TODO: discuss data organization.
+
+Participating systems will be evaluated using TODO: discuss evaluation measure. 
 
 
 Terms and Conditions
