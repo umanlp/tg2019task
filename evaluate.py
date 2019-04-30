@@ -7,6 +7,9 @@ from collections import namedtuple, OrderedDict
 
 import pandas as pd
 
+class ListShouldBeEmptyWarning(UserWarning):
+    pass
+
 Question = namedtuple('Question', 'id explanations')
 Explanation = namedtuple('Explanation', 'id role')
 
@@ -57,7 +60,7 @@ def compute_ranks(true, pred):
 
     # Example: Mercury_SC_416133
     if targets:
-        warnings.warn('targets list should be empty, but it contains: ' + ', '.join(targets))
+        warnings.warn('targets list should be empty, but it contains: ' + ', '.join(targets), ListShouldBeEmptyWarning)
 
         for _ in targets:
             ranks.append(0)
