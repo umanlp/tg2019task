@@ -99,9 +99,11 @@ def main():
 
             score = average_precision(ranks)
 
-            if math.isfinite(score):
-                total += score
-                count += 1
+            if not math.isfinite(score):
+                score = 0.
+
+            total += score
+            count += 1
 
             print(question.id, score, file=sys.stderr)
 
