@@ -74,6 +74,20 @@ Participating systems will be evaluated using TODO: discuss evaluation measure.
 
 The shared task data distribution includes a baseline that TODO: discuss how the baseline works. The performance of this baseline on the development partition is TODO: summarize the baseline performance. 
 
+## Examples
+
+Simpler
+![Example explanation graph](images/example-simpler-insect6legs.png)
+
+List
+![Example explanation graph](images/example-list-cloudsfogmadeof.png)
+
+Hard, many-facts
+![Example explanation graph](images/example-hard-treesurviveforestfire.png)
+
+
+
+
 
 Terms and Conditions
 --------------------
