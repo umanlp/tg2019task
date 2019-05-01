@@ -25,6 +25,7 @@ For this question, it's highly unlikely that one could find a passage in a corpu
 Combining each of these facts is often modeled as a graph traversal problem, where one must "hop" from some starting fact (say, fact 1) to other, related facts, until one has enough facts to infer the answer.  This is illustrated below: 
 
 *** INSERT PICTURE HERE***
+[Example explanation graph](images/example-girl-eating-apple.jpg)
 
 #### The need for explanations
 
