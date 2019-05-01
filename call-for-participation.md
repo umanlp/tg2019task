@@ -24,7 +24,7 @@ For this question, it's highly unlikely that one could find a passage in a corpu
 
 Combining each of these facts is often modeled as a graph traversal problem, where one must "hop" from some starting fact (say, fact 1) to other, related facts, until one has enough facts to infer the answer.  This is illustrated below: 
 
-*** INSERT PICTURE HERE***
+![Example explanation graph](images/example-girl-eating-apple.jpg)
 
 #### The need for explanations
 
@@ -73,6 +73,20 @@ The data used in this shared task comes from the WorldTree corpus (Jansen et al.
 Participating systems will be evaluated using TODO: discuss evaluation measure. 
 
 The shared task data distribution includes a baseline that TODO: discuss how the baseline works. The performance of this baseline on the development partition is TODO: summarize the baseline performance. 
+
+## Examples
+
+Simpler
+![Example explanation graph](images/example-simpler-insect6legs.png)
+
+List
+![Example explanation graph](images/example-list-cloudsfogmadeof.png)
+
+Hard, many-facts
+![Example explanation graph](images/example-hard-treesurviveforestfire.png)
+
+
+
 
 
 Terms and Conditions
