@@ -4,6 +4,7 @@ import math
 import sys
 import warnings
 from collections import namedtuple, OrderedDict
+from functools import partial
 
 import pandas as pd
 
@@ -81,16 +82,7 @@ def average_precision(ranks):
     return total / len(ranks)
 
 
-def main():
-    import argparse
-
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--gold', type=argparse.FileType('r', encoding='UTF-8'), required=True)
-    parser.add_argument('pred', type=argparse.FileType('r', encoding='UTF-8'))
-    args = parser.parse_args()
-
-    gold, pred = load_gold(args.gold), load_pred(args.pred)
-
+def mean_average_precision_score(gold, pred, callback=None):
     total, count = 0., 0
 
     for question in gold.values():
@@ -105,11 +97,30 @@ def main():
             total += score
             count += 1
 
-            print(question.id, score, file=sys.stderr)
+            if callback: callback(question.id, score)
 
     mean_ap = total / count if count > 0 else 0.
 
-    print('Total: ', mean_ap)
+    return mean_ap
+
+
+def main():
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--gold', type=argparse.FileType('r', encoding='UTF-8'), required=True)
+    parser.add_argument('pred', type=argparse.FileType('r', encoding='UTF-8'))
+    args = parser.parse_args()
+
+    gold, pred = load_gold(args.gold), load_pred(args.pred)
+
+    # callback is optional, here it is used to print intermediate results to STDERR
+    mean_ap = mean_average_precision_score(
+        gold, pred,
+        callback=partial(print, file=sys.stderr)
+    )
+
+    print('MAP: ', mean_ap)
 
 
 if '__main__' == __name__:
