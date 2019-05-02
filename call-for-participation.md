@@ -10,17 +10,17 @@ Multi-hop inference is the task of combining more than one piece of information 
 Question answering can often be modeled as a retrieval task, answer sentence selection, where a method must find some sentence or short passage of text in a corpus that answers the question.  Unfortunately for complex questions it's unlikely that one can find such answer passages, even in extremely large corpora.  For example, consider the following multiple choice elementary science question:
 
 Q: Which of the following is an example of an organism taking in nutrients?
-( A ) a dog burying a bone
-( B ) a girl eating an apple (Correct answer)
-( C ) an insect crawling on a leaf
-( D ) a boy planting tomatoes
+* ( A ) a dog burying a bone
+* ( B ) a girl eating an apple (Correct answer)
+* ( C ) an insect crawling on a leaf
+* ( D ) a boy planting tomatoes
 
 For this question, it's highly unlikely that one could find a passage in a corpus that says "a girl eating an apple is an example of an organism taking in nutrients", even if that corpus was extremely large.  Instead, one likely has to combine a number of separate facts to successfully make this inference:
-( 1 ) A girl means a human girl.
-( 2 ) Humans are living organisms.
-( 3 ) Eating is when an organism takes in nutrients in the form of food.
-( 4 ) Fruits are kinds of foods.
-( 5 ) An apple is a kind of fruit.
+1. A girl means a human girl.
+2. Humans are living organisms.
+3. Eating is when an organism takes in nutrients in the form of food.
+4. Fruits are kinds of foods.
+5. An apple is a kind of fruit.
 
 Combining each of these facts is often modeled as a graph traversal problem, where one must "hop" from some starting fact (say, fact 1) to other, related facts, until one has enough facts to infer the answer.  This is illustrated below: 
 
@@ -70,31 +70,114 @@ Data
 
 The data used in this shared task comes from the WorldTree corpus (Jansen et al., 2018). The data includes approximately 2,200 elementary science questions drawn from the Aristo Reasoning Challenge (ARC) corpus (Clark et al., REF).  1,680 of these questions include detailed explanation graphs for their answers, and are divided into the standard ARC train, development, and test sets.  The remaining questions that do not have gold explanation graphs required specialized reasoning (e.g. spatial, mathematical) that did not easily lend itself to the method of textual explanation used.  Each explanation is represented as a reference to one or more facts in a structured knowledge base of tables (the "tablestore").  The tablestore contains 60+ tables, each organized around a particular kind of knowledge (e.g. taxonomic knowledge, part-of knowledge, properties, changes, causality, coupled relationships).  Each "fact" is represented as one row in a given table and can be used either as a structured representation (with the n-ary relational information afforded by the columns in each table), or it can be read off directly as a free-text sentence.  The WorldTree tablestore knowledge base contains approximately 5,000 table rows/"facts", 3,600 of which are actively used in at least one explanation.  Explanation graphs commonly reuse the same knowledge (i.e. the same table row) used in other explanations.  The most common fact ("an animal is a kind of organism") is used in 89 different explanations, and approximately 1,500 facts are reused in more than one explanation.  More details, analyses, and summary statistics are provided in the WorldTree paper.  
 
+For each explanation, the WorldTree corpus also includes annotation for *how important* each fact is towards the explanation.  There are three categories of importance:
+* **CENTRAL:** These facts are at the core of the explanation, and are often core scientific concepts in elementary science.  For example, "melting means changing from a solid to a liquid by adding heat energy".
+* **GROUNDING:** These facts tend to link core scientific facts in the explanation with specific examples found in the question.  For example, "ice is a kind of solid"
+* **LEXICAL GLUE:** These facts tend to express synonymy relationships, such as "heat means increase heat energy".  These are used to bridge two facts in an explanation together (or, a fact in an explanation to the question or answer).  The explanation graphs in WorldTree require that explanation sentences are explicitly linked based on lexical overlap (shared words), and these lexical glue sentences tend to fill this purpose when knowledge in different facts has been expressed with different words.
+
+Because of this annotation, it's possible to separately evaluate how many of the core/central facts, grounding facts, and synonymy relations that a given inference method reconstructs.  This would allow one to automatically determine that of two algorithms with similar performance, one primarily reconstructs more of the core/central facts, while another has a more even distribution between central, grounding, and lexical glue facts.
+
 ### Task 
 Participating systems are asked to perform an *explanation reconstruction* task, a stepping-stone task towards general multi-hop inference on large graphs.  The task is as follows: Given a question and known correct answer, build a system that reconstructs the gold explanation.  For ease of evaluation (and to encourage a variety of methods, not only those involving graph-based inference), the task is framed as a ranking task  where for a given question, one must selectively rank facts in the gold explanation higher than facts not present in the gold explanation.
 
-TODO: discuss data organization. Include 1 example question, correct/incorrect answers, and explanation for the correct answer. 
+### Follow-through Example
+![Example explanation graph](images/example-ice-melting.png)
 
-Participating systems will be evaluated using mean average precision (MAP) on the explanation reconstruction task.  Participants are also encouraged, but not required, to report the following measures with their systems: 
+```
+Question: A student placed an ice cube on a plate in the sun. Ten minutes later, only water was on the plate. Which process caused the ice cube to change to water?
+mcAnswer[0]: condensation	mcAnswer[1]: evaporation	mcAnswer[2]: freezing	mcAnswer[3]: melting	
+Correct Answer Candidate: 3 (melting)
+
+Sentences in Gold Explanation (Table Rows):
+	6abc-4443-f672-9a97 	CENTRAL 	melting means changing from a solid into a liquid by adding heat energy
+	a1a9-97db-a771-1c2b 	GROUNDING 	an ice cube is a kind of solid
+	3961-d09c-4b9a-a6f7 	GROUNDING 	water is a kind of liquid
+	4a5a-9115-28a9-b97b 	CENTRAL 	water is in the solid state , called ice , for temperatures between 0 ; -459 ; -273 and 273 ; 32 ; 0 K ; F ; C
+	4710-c993-7a19-bef2 	LEXGLUE 	heat means heat energy
+	7d37-b81d-0cf3-9ae0 	LEXGLUE 	adding heat means increasing temperature
+	9554-47d7-c095-1df7 	CENTRAL 	if an object ; a substance absorbs solar energy then that object ; that substance will increase in temperature
+	e00a-03fe-d978-1a27 	CENTRAL 	if an object ; something is in the sunlight then that object ; that something will absorb solar energy
+	a538-175f-9223-d117 	CENTRAL 	the sun is a source of light ; light energy called sunlight
+	8939-25ca-fb9c-d790 	LEXGLUE 	to be in the sun means to be in the sunlight
+	36f6-e94f-8780-1897 	CENTRAL 	melting is a kind of process
+
+
+Explanation Regeneration Task: Baseline Model's Ranks for Table Rows/Sentences: 
+(* denotes a ranked sentence is part of the gold explanation)
+1 	[COS_A:0.707, COS_Q:0.107, ] 	* melting is a kind of process
+2 	[COS_A:0.707, COS_Q:0.000, ] 	thawing is similar to melting
+3 	[COS_A:0.577, COS_Q:0.080, ] 	melting is a kind of phase change
+4 	[COS_A:0.604, COS_Q:0.000, ] 	melting is when solids are heated above their melting point
+5 	[COS_A:0.413, COS_Q:0.117, ] 	amount of water in a body of water increases by storms ; rain ; glaciers melting ; snow melting ; ice melting
+6 	[COS_A:0.000, COS_Q:0.428, ] 	an ice cube is a kind of object
+7 	[COS_A:0.000, COS_Q:0.428, ] 	* an ice cube is a kind of solid
+8 	[COS_A:0.453, COS_Q:0.000, ] 	freezing point is similar to melting point
+9 	[COS_A:0.447, COS_Q:0.000, ] 	melting point is a property of a substance ; material
+10 	[COS_A:0.408, COS_Q:0.000, ] 	glaciers melting has a negative impact on the glaicial environment
+11 	[COS_A:0.000, COS_Q:0.296, ] 	plate tectonics is a kind of process
+12 	[COS_A:0.354, COS_Q:0.000, ] 	sometimes piles of rock are formed by melting glaciers depositing rocks
+13 	[COS_A:0.354, COS_Q:0.000, ] 	melting point can be used to identify a pure substance
+14 	[COS_A:0.000, COS_Q:0.260, ] 	ice crystals means ice
+15 	[COS_A:0.236, COS_Q:0.069, ] 	the freezing point of water ; melting point of water is 32F ; 0C ; 273K
+16 	[COS_A:0.318, COS_Q:0.000, ] 	the melting point of iron is 2800F ; 1538C ; 1811K
+17 	[COS_A:0.318, COS_Q:0.000, ] 	the melting point of oxygen is -361.8F ; -218.8C ; 54.4K
+18 	[COS_A:0.318, COS_Q:0.000, ] 	* melting means changing from a solid into a liquid by adding heat energy
+19 	[COS_A:0.290, COS_Q:0.000, ] 	adding salt to a liquid decreases the melting point of that liquid
+20 	[COS_A:0.000, COS_Q:0.214, ] 	ice is a kind of food
+(note, only top 20 ranked table rows shown)
+Ranks of gold rows: 1, 7, 18, 53, 102, 384, 408, 858, 860, 3778, 3956
+
+Scoring Metrics:
+ Average Precision: 0.14862461238725275
+ 
+Scoring Metrics (by explanation sentence role): 
+ Average Precision (CENTRAL): 0.19516123051492149
+ Average Precision (GROUNDING): 0.10294117647058823
+ Average Precision (LEXGLUE): 0.0012593148624291516
+ 
+Scoring Metrics (by whether a gold sentence has lexical overlap w/question or answer): 
+ Average Precision (LEXOVERLAP): 0.20264768732550112
+ Average Precision (NOLEXOVERLAP): 0.004046859466057559
+ 
+Scoring Metrics (Precision@N):
+ Precision@1: 1.000
+ Precision@2: 0.500
+ Precision@3: 0.333
+ Precision@4: 0.250
+ Precision@5: 0.200
+```
+
+### Evaluation 
+Participating systems will be evaluated using mean average precision (MAP) on the explanation reconstruction task.  The example code provided calculates this, both overall, as well as broken down into specific sub-measures (e.g. the role of sentences in an explanation, and whether a sentence has lexical overlap with the question or answer).
+
+Participants are also encouraged, but not required, to report the following measures with their systems: 
 1. A histogram of explanation reconstruction performance (MAP) versus the length of the gold explanation being reconstructed
 2. If also using the data to perform the QA task, reporting overall QA accuracy as well as explanation reconstruction accuracy for correctly answered questions
 
-The shared task data distribution includes a baseline that **TODO**: discuss how the baseline works. The performance of this baseline on the development partition is **TODO**: summarize the baseline performance. 
+### Baselines
+The shared task data distribution includes a baseline that uses a term frequency model (tf.idf) to rank how likely table row sentences are to be a part of a given explanation.  The performance of this baseline on the development partition is 0.279 MAP.   Baselines for both Scala and Python are provided.
 
-## Examples
+## Additional Example Explanation Graphs
 
-Simpler
+Explanation graphs vary in size (1-16 facts, an average of 6 facts per explanation), and in their connectivity properties.  Some are relatively simple, while others are complex.  Here are additional examples:
+
+A straightforward chaining of facts:
 ![Example explanation graph](images/example-simpler-insect6legs.png)
 
-List
+An example of a list question:
 ![Example explanation graph](images/example-list-cloudsfogmadeof.png)
 
-Hard, many-facts
+An example of a hard question with many facts in the explanation, including a lot of challenging commonsense/world knowledge: 
 ![Example explanation graph](images/example-hard-treesurviveforestfire.png)
 
 
+Submission
+--------------------
+**TODO**: Codalab
 
-
+Contacts
+--------------------
+Questions about this shared task can be directed to **<XXX@YYY.ZZZ>** .
 
 Terms and Conditions
 --------------------
