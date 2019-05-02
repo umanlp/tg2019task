@@ -68,11 +68,18 @@ Important Dates
 Data
 ----
 
-The data used in this shared task comes from the WorldTree corpus (Jansen et al., 2018). The data includes TODO: discuss data organization. Include 1 example question, correct/incorrect answers, and explanation for the correct answer. 
+The data used in this shared task comes from the WorldTree corpus (Jansen et al., 2018). The data includes approximately 2,200 elementary science questions drawn from the Aristo Reasoning Challenge (ARC) corpus (Clark et al., REF).  1,680 of these questions include detailed explanation graphs for their answers, and are divided into the standard ARC train, development, and test sets.  The remaining questions that do not have gold explanation graphs required specialized reasoning (e.g. spatial, mathematical) that did not easily lend itself to the method of textual explanation used.  Each explanation is represented as a reference to one or more facts in a structured knowledge base of tables (the "tablestore").  The tablestore contains 60+ tables, each organized around a particular kind of knowledge (e.g. taxonomic knowledge, part-of knowledge, properties, changes, causality, coupled relationships).  Each "fact" is represented as one row in a given table and can be used either as a structured representation (with the n-ary relational information afforded by the columns in each table), or it can be read off directly as a free-text sentence.  The WorldTree tablestore knowledge base contains approximately 5,000 table rows/"facts", 3,600 of which are actively used in at least one explanation.  Explanation graphs commonly reuse the same knowledge (i.e. the same table row) used in other explanations.  The most common fact ("an animal is a kind of organism") is used in 89 different explanations, and approximately 1,500 facts are reused in more than one explanation.  More details, analyses, and summary statistics are provided in the WorldTree paper.  
 
-Participating systems will be evaluated using TODO: discuss evaluation measure. 
+### Task 
+Participating systems are asked to perform an *explanation reconstruction* task, a stepping-stone task towards general multi-hop inference on large graphs.  The task is as follows: Given a question and known correct answer, build a system that reconstructs the gold explanation.  For ease of evaluation (and to encourage a variety of methods, not only those involving graph-based inference), the task is framed as a ranking task  where for a given question, one must selectively rank facts in the gold explanation higher than facts not present in the gold explanation.
 
-The shared task data distribution includes a baseline that TODO: discuss how the baseline works. The performance of this baseline on the development partition is TODO: summarize the baseline performance. 
+TODO: discuss data organization. Include 1 example question, correct/incorrect answers, and explanation for the correct answer. 
+
+Participating systems will be evaluated using mean average precision (MAP) on the explanation reconstruction task.  Participants are also encouraged, but not required, to report the following measures with their systems: 
+1. A histogram of explanation reconstruction performance (MAP) versus the length of the gold explanation being reconstructed
+2. If also using the data to perform the QA task, reporting overall QA accuracy as well as explanation reconstruction accuracy for correctly answered questions
+
+The shared task data distribution includes a baseline that **TODO**: discuss how the baseline works. The performance of this baseline on the development partition is **TODO**: summarize the baseline performance. 
 
 ## Examples
 
