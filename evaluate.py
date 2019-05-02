@@ -8,8 +8,10 @@ from functools import partial
 
 import pandas as pd
 
+
 class ListShouldBeEmptyWarning(UserWarning):
     pass
+
 
 Question = namedtuple('Question', 'id explanations')
 Explanation = namedtuple('Explanation', 'id role')
