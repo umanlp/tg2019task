@@ -106,6 +106,7 @@ venv.bak/
 # mypy
 .mypy_cache/
 
+Thumbs.db
 *.tsv
 *.txt
 *.zip
