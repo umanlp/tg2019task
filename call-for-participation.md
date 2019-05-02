@@ -81,7 +81,11 @@ Because of this annotation, it's possible to separately evaluate how many of the
 Participating systems are asked to perform an *explanation reconstruction* task, a stepping-stone task towards general multi-hop inference on large graphs.  The task is as follows: Given a question and known correct answer, build a system that reconstructs the gold explanation.  For ease of evaluation (and to encourage a variety of methods, not only those involving graph-based inference), the task is framed as a ranking task  where for a given question, one must selectively rank facts in the gold explanation higher than facts not present in the gold explanation.
 
 ### Follow-through Example
+Given the following question (top) and it's gold explanation graph (bottom):
 ![Example explanation graph](images/example-ice-melting.png)
+
+An example of ranking each of the ~5000 sentences in the Tablestore knowledge base to attempt to rebuild this explanation is as follows.  We see that some of the gold explanation sentences are ranked near the top (e.g. melting is a kind of process (rank 1), an ice cube is a kind of solid (rank 7), melting means changing from a solid to a liquid by adding heat energy (rank 18)). A number of other sentences in the gold explanation are ranked much lower (53, 102, 384, 408, 858, 860, 3778, 3956).  The mean average precision for this ranking on this question is 0.148.  When considering only the central questions in the explanation, the mean average precision increases to 0.195.
+
 
 ```
 Question: A student placed an ice cube on a plate in the sun. Ten minutes later, only water was on the plate. Which process caused the ice cube to change to water?
