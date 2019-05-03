@@ -157,6 +157,7 @@ Participating systems will be evaluated using mean average precision (MAP) on th
 Participants are also encouraged, but not required, to report the following measures with their systems: 
 1. A histogram of explanation reconstruction performance (MAP) versus the length of the gold explanation being reconstructed
 2. If also using the data to perform the QA task, reporting overall QA accuracy as well as explanation reconstruction accuracy for correctly answered questions
+3. Though the Worldtree corpus was constructed to automate explanation evaluation, it is still possible some facts may be highly relevant but not included in an explanation.  An error analysis of the final system is strongly encouraged to determine the proportion of errors that are genuine errors of various categories, and the proportion of errors that are "also good" explanation sentences. 
 
 ### Baselines
 The shared task data distribution includes a baseline that uses a term frequency model (tf.idf) to rank how likely table row sentences are to be a part of a given explanation.  The performance of this baseline on the development partition is 0.279 MAP.   Baselines for both Scala and Python are provided.
