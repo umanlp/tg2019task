@@ -162,6 +162,19 @@ Participants are also encouraged, but not required, to report the following meas
 ### Baselines
 The shared task data distribution includes a baseline that uses a term frequency model (tf.idf) to rank how likely table row sentences are to be a part of a given explanation.  The performance of this baseline on the development partition is 0.279 MAP.   Baselines for both Scala and Python are provided.
 
+#### Python
+
+```shell
+$ ./baseline_tfidf.py annotation/expl-tablestore-export-2017-08-25-230344/tables questions/ARC-Elementary-QC+EXPL-Dev.tsv
+```
+
+The format of the `predict.txt` file is `questionID<TAB>explanationID` without header;
+the order is important.
+
+```shell
+$ ./evaluate.py --gold=questions/ARC-Elementary-QC+EXPL-Dev.tsv predict.txt
+```
+
 ## Additional Example Explanation Graphs
 
 Explanation graphs vary in size (1-16 facts, an average of 6 facts per explanation), and in their connectivity properties.  Some are relatively simple, while others are complex.  Here are additional examples:
