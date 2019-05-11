@@ -54,16 +54,15 @@ Many of these contemporary methodological challenges are potentially now address
 Important Dates
 ---------------
 
-1. __xx-xx-xxxx__: Example (trial) data release
-2. __xx-xx-xxxx__: Training data release
-3. __xx-xx-xxxx__: Test data release. Evaluation start
-4. __xx-xx-xxxx__: Evaluation end
-5. __xx-xx-xxxx__: System description paper deadline
-6. __xx-xx-xxxx__: Deadline for reviews of system description papers
-7. __xx-xx-xxxx__: Author notifications
-8. __xx-xx-xxxx__: Camera-ready description paper deadline
-9. __11-03-2019/11-04-2019__: TextGraphs-13 workshop
-
+* 13-05-2019: Example (trial) data release
+* 17-05-2019: Training data release
+* 12-07-2019: Test data release; Evaluation start
+* 26-07-2019: Evaluation end
+* 19-08-2019: System description paper deadline
+* 09-09-2019: Deadline for reviews of system description papers
+* 16-09-2019: Author notifications
+* 30-09-2019: Camera-ready description paper deadline
+* __11-03-2019/11-04-2019__: [TextGraphs-13 workshop](https://sites.google.com/view/textgraphs2019)
 
 Data
 ----
@@ -195,7 +194,10 @@ Submission
 
 Contacts
 --------------------
-Questions about this shared task can be directed to **<XXX@YYY.ZZZ>** .
+
+We welcome questions and answers on the shared task on GitHub: <https://github.com/umanlp/tg2019task/issues>.
+
+To contact the task organizers directly, please send an email to [textgraphsoc@gmail.com](mailto:textgraphsoc@gmail.com).
 
 Terms and Conditions
 --------------------
