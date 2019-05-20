@@ -106,7 +106,10 @@ venv.bak/
 # mypy
 .mypy_cache/
 
+worldtree-graphs-png/
+worldtree_full/
 Thumbs.db
+*.docx
 *.tsv
 *.txt
 *.zip
