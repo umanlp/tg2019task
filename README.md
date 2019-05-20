@@ -78,6 +78,8 @@ For each explanation, the WorldTree corpus also includes annotation for *how imp
 
 Because of this annotation, it's possible to separately evaluate how many of the core/central facts, grounding facts, and synonymy relations that a given inference method reconstructs.  This would allow one to automatically determine that of two algorithms with similar performance, one primarily reconstructs more of the core/central facts, while another has a more even distribution between central, grounding, and lexical glue facts.
 
+The dataset is available at <http://cognitiveai.org/dist/worldtree_corpus_textgraphs2019sharedtask_withgraphvis.zip>. Please note that this distribution is still subject to the terms set forth in the included license `EULA AI2 Mercury Dataset 01012018.docx`.
+
 ### Task 
 Participating systems are asked to perform an *explanation reconstruction* task, a stepping-stone task towards general multi-hop inference on large graphs.  The task is as follows: Given a question and known correct answer, build a system that reconstructs the gold explanation.  For ease of evaluation (and to encourage a variety of methods, not only those involving graph-based inference), the task is framed as a ranking task  where for a given question, one must selectively rank facts in the gold explanation higher than facts not present in the gold explanation.
 
@@ -161,20 +163,27 @@ Participants are also encouraged, but not required, to report the following meas
 3. Though the Worldtree corpus was constructed to automate explanation evaluation, it is still possible some facts may be highly relevant but not included in an explanation.  An error analysis of the final system is strongly encouraged to determine the proportion of errors that are genuine errors of various categories, and the proportion of errors that are "also good" explanation sentences. 
 
 ### Baselines
-The shared task data distribution includes a baseline that uses a term frequency model (tf.idf) to rank how likely table row sentences are to be a part of a given explanation.  The performance of this baseline on the development partition is 0.279 MAP.   Baselines for both Scala and Python are provided.
+
+The shared task data distribution includes a baseline that uses a term frequency model (tf.idf) to rank how likely table row sentences are to be a part of a given explanation.  The performance of this baseline on the development partition is 0.054 MAP.   Baselines for both Scala and Python are provided.
 
 #### Python
 
 ```shell
-$ ./baseline_tfidf.py annotation/expl-tablestore-export-2017-08-25-230344/tables questions/ARC-Elementary-QC+EXPL-Dev.tsv
+$ make dataset
+```
+
+```shell
+$ ./baseline_tfidf.py annotation/expl-tablestore-export-2017-08-25-230344/tables questions/ARC-Elementary+EXPL-Dev.tsv > predict.txt
 ```
 
 The format of the `predict.txt` file is `questionID<TAB>explanationID` without header;
 the order is important.
 
 ```shell
-$ ./evaluate.py --gold=questions/ARC-Elementary-QC+EXPL-Dev.tsv predict.txt
+$ ./evaluate.py --gold=questions/ARC-Elementary+EXPL-Dev.tsv predict.txt
 ```
+
+In order to prepare a submission file for CodaLab, create a ZIP file containing your `predict.txt`, cf. `make predict-tfidf.zip`.
 
 ## Additional Example Explanation Graphs
 
