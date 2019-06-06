@@ -1,0 +1,43 @@
+Call for Participation:
+TextGraphs-13 Shared Task on Explanation Regeneration
+https://github.com/umanlp/tg2019task
+
+We invite participation in the new shared task on explanaton regenaration associated with the 13th Workshop on Graph-Based Natural Language Processing (TextGraphs-2019). 
+
+Overview
+========
+
+This shared task focuses on explanation reconstruction, a stepping-stone  towards general multi-hop inference over language. In particular, the inputs to this task consist of questions and their correct answers. Participating systems must extract and rank explanation sentences from a provided unstructured knowledge base such that the top-ranked sentences provide a complete explanation for the given answer.
+
+Example
+=======
+
+For example, for the question: "Which of the following is an example of an organism taking in nutrients?" with the correct answer: "a girl eating an apple", an ideal system would rank the following explanatory statements at the top of its extracted sentences:
+
+A girl means a human girl.
+Humans are living organisms.
+Eating is when an organism takes in nutrients in the form of food.
+Fruits are kinds of foods.
+An apple is a kind of fruit.
+
+Important Dates
+===============
+
+13-05-2019: Example (trial) data release
+17-05-2019: Training data release
+12-07-2019: Test data release; Evaluation start
+26-07-2019: Evaluation end
+19-08-2019: System description paper deadline
+09-09-2019: Deadline for reviews of system description papers
+16-09-2019: Author notifications
+30-09-2019: Camera-ready description paper deadline
+03-11-2019/04-11-2019: TextGraphs-13 workshop
+
+Data
+====
+
+The data used in this shared task contains 1,680 questions, together with explanation sentences for their correct answers (Jansen et al., 2018). The knowledge base supporting these questions contains approximately 5,000 facts. 
+
+Please see the shared task website for more details: 
+https://github.com/umanlp/tg2019task
+
