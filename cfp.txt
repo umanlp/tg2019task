@@ -19,15 +19,16 @@ a complete explanation for the given answer.
 Example
 =======
 
-For example, for the question: "Which of the following is an example of an organism taking in nutrients?" with
-the correct answer: "a girl eating an apple", an ideal system would rank the following explanatory statements
+For example, for the question: "Which of the following is an example of an
+organism taking in nutrients?" with the correct answer: "a girl eating an
+apple", an ideal system would rank the following explanatory statements
 at the top of its extracted sentences:
 
-A girl means a human girl.
-Humans are living organisms.
-Eating is when an organism takes in nutrients in the form of food.
-Fruits are kinds of foods.
-An apple is a kind of fruit.
+1. A girl means a human girl.
+2. Humans are living organisms.
+3. Eating is when an organism takes in nutrients in the form of food.
+4. Fruits are kinds of foods.
+5. An apple is a kind of fruit.
 
 Important Dates
 ===============
@@ -48,8 +49,8 @@ Data
 The data used in this shared task contains 1,680 questions, together with
 explanation sentences for their correct answers (Jansen et al., 2018).
 
-The knowledge base supporting these questions contains approximately
-5,000 facts.
+The knowledge base supporting these questions contains
+approximately 5,000 facts.
 
 Please see the shared task website for more details:
 https://github.com/umanlp/tg2019task
