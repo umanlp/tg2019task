@@ -4,7 +4,7 @@ https://github.com/umanlp/tg2019task
 
 We invite participation in the new shared task on explanation regeneration
 associated with the 13th Workshop on Graph-Based Natural Language Processing
-(TextGraphs).
+(TextGraphs 2019).
 
 Overview
 ========
