@@ -185,6 +185,11 @@ $ ./evaluate.py --gold=questions/ARC-Elementary+EXPL-Dev.tsv predict.txt
 
 In order to prepare a submission file for CodaLab, create a ZIP file containing your `predict.txt`, cf. `make predict-tfidf.zip`.
 
+#### Scala
+
+A Scala tf.idf baseline that achieves a MAP of 0.28 is available at:
+<https://github.com/cognitiveailab/explanationreconstructiontextgaphs2019>
+
 ## Additional Example Explanation Graphs
 
 Explanation graphs vary in size (1-16 facts, an average of 6 facts per explanation), and in their connectivity properties.  Some are relatively simple, while others are complex.  Here are additional examples:
