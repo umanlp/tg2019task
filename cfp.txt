@@ -13,7 +13,7 @@ This shared task focuses on explanation reconstruction, a stepping-stone
 towards general multi-hop inference over language. In particular, the inputs
 to this task consist of questions and their correct answers. Participating
 systems must extract and rank explanation sentences from a provided
-unstructured knowledge base such that the top-ranked sentences provide
+structured knowledge base such that the top-ranked sentences provide
 a complete explanation for the given answer.
 
 Example
@@ -46,7 +46,8 @@ Important Dates
 Data
 ====
 
-The data used in this shared task contains 1,680 questions, together with
+The data used in this shared task contains 1,680 questions drawn from the
+AI2 Reasoning Challenge (ARC) dataset (Clark et al., 2018), together with 
 explanation sentences for their correct answers (Jansen et al., 2018).
 
 The knowledge base supporting these questions contains
