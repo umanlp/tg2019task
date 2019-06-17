@@ -23,11 +23,11 @@ def load_gold(filepath_or_buffer, sep='\t'):
     gold = OrderedDict()
 
     for _, row in df[['questionID', 'explanation']].dropna().iterrows():
-        explanations = OrderedDict((uid, Explanation(uid, role))
+        explanations = OrderedDict((uid.lower(), Explanation(uid.lower(), role))
                                    for e in row['explanation'].split()
                                    for uid, role in (e.split('|', 1),))
 
-        question = Question(row['questionID'], explanations)
+        question = Question(row['questionID'].lower(), explanations)
 
         gold[question.id] = question
 
@@ -40,7 +40,7 @@ def load_pred(filepath_or_buffer, sep='\t'):
     pred = OrderedDict()
 
     for question_id, df_explanations in df.groupby('question'):
-        pred[question_id] = list(df_explanations['explanation'])
+        pred[question_id.lower()] = list(df_explanations['explanation'].str.lower())
 
     return pred
 
@@ -99,7 +99,8 @@ def mean_average_precision_score(gold, pred, callback=None):
             total += score
             count += 1
 
-            if callback: callback(question.id, score)
+            if callback:
+                callback(question.id, score)
 
     mean_ap = total / count if count > 0 else 0.
 
