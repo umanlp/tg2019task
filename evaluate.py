@@ -40,7 +40,7 @@ def load_pred(filepath_or_buffer, sep='\t'):
     pred = OrderedDict()
 
     for question_id, df_explanations in df.groupby('question'):
-        pred[question_id.lower()] = list(df_explanations['explanation'].str.lower())
+        pred[question_id.lower()] = list(OrderedDict.fromkeys(df_explanations['explanation'].str.lower()))
 
     return pred
 
