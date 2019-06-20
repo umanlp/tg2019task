@@ -4,7 +4,10 @@ https://github.com/umanlp/tg2019task
 
 We invite participation in the new shared task on explanation regeneration
 associated with the 13th Workshop on Graph-Based Natural Language Processing
-(TextGraphs 2019).
+(TextGraphs 2019). 
+All systems participating in the shared task will be invited to submit system description papers. 
+Each system description paper will be peer-reviewed by (two) other participating teams and will be 
+presented as a poster at the main workshop. 
 
 Overview
 ========
