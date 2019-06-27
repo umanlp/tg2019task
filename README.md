@@ -1,5 +1,5 @@
-TextGraphs-13 Shared Task on Explanation Regeneration
-=====================================================
+TextGraphs-13 Shared Task on Multi-Hop Inference Explanation Regeneration
+=========================================================================
 
 Overview
 --------
