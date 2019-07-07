@@ -57,7 +57,7 @@ Important Dates
 * 13-05-2019: Example (trial) data release
 * 17-05-2019: Training data release
 * 12-07-2019: Test data release; Evaluation start
-* 26-07-2019: Evaluation end
+* 09-08-2019: Evaluation end
 * 19-08-2019: System description paper deadline
 * 09-09-2019: Deadline for reviews of system description papers
 * 16-09-2019: Author notifications
