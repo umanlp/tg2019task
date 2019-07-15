@@ -207,7 +207,7 @@ An example of a hard question with many facts in the explanation, including a lo
 Submission
 --------------------
 
-Please submit your solutions via CodaLab: <https://competitions.codalab.org/competitions/23047>
+Please submit your solutions via CodaLab: <https://competitions-new.codalab.org/competitions/20150>
 
 Contacts
 --------------------
