@@ -44,6 +44,9 @@ def main():
         for file in files:
             explanations += read_explanations(os.path.join(path, file))
 
+    if not explanations:
+        warnings.warn('Empty explanations')
+
     df_q = pd.read_csv(args.questions, sep='\t')
     df_e = pd.DataFrame(explanations, columns=('uid', 'text'))
 
