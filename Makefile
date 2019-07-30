@@ -1,3 +1,5 @@
+WORLDTREE := worldtree_corpus_textgraphs2019sharedtask_withgraphvis
+
 predict-tfidf.zip: predict-tfidf.txt
 	rm -f $@
 	$(eval TMP := $(shell mktemp -d))
@@ -6,7 +8,7 @@ predict-tfidf.zip: predict-tfidf.txt
 	rm -rf $(TMP)
 
 predict-tfidf.txt:
-	./baseline_tfidf.py annotation/expl-tablestore-export-2017-08-25-230344/tables questions/ARC-Elementary+EXPL-Dev.tsv > $@
+	./baseline_tfidf.py $(WORLDTREE)/annotation/expl-tablestore-export-2017-08-25-230344/tables $(WORLDTREE)/questions/ARC-Elementary+EXPL-Dev.tsv > $@
 
 dataset: worldtree_corpus_textgraphs2019sharedtask_withgraphvis.zip
 	unzip -o $<
