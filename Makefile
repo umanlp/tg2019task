@@ -1,11 +1,14 @@
 WORLDTREE := worldtree_corpus_textgraphs2019sharedtask_withgraphvis
 
-predict-tfidf.zip: predict-tfidf.txt
+predict-tfidf%.zip: predict-tfidf%.txt
 	rm -f $@
 	$(eval TMP := $(shell mktemp -d))
 	ln -sf $(CURDIR)/$< $(TMP)/predict.txt
 	zip -j $@ $(TMP)/predict.txt
 	rm -rf $(TMP)
+
+predict-tfidf-test.txt:
+	./baseline_tfidf.py $(WORLDTREE)/annotation/expl-tablestore-export-2017-08-25-230344/tables $(WORLDTREE)/questions/ARC-Elementary+EXPL-Test-Masked.tsv > $@
 
 predict-tfidf.txt:
 	./baseline_tfidf.py $(WORLDTREE)/annotation/expl-tablestore-export-2017-08-25-230344/tables $(WORLDTREE)/questions/ARC-Elementary+EXPL-Dev.tsv > $@
