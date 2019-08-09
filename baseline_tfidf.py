@@ -13,7 +13,7 @@ def read_explanations(path):
     header = []
     uid = None
 
-    df = pd.read_csv(path, sep='\t')
+    df = pd.read_csv(path, sep='\t', dtype=str)
 
     for name in df.columns:
         if name.startswith('[SKIP]'):
@@ -47,7 +47,7 @@ def main():
     if not explanations:
         warnings.warn('Empty explanations')
 
-    df_q = pd.read_csv(args.questions, sep='\t')
+    df_q = pd.read_csv(args.questions, sep='\t', dtype=str)
     df_e = pd.DataFrame(explanations, columns=('uid', 'text'))
 
     vectorizer = TfidfVectorizer().fit(df_q['Question']).fit(df_e['text'])
