@@ -18,7 +18,7 @@ Explanation = namedtuple('Explanation', 'id role')
 
 
 def load_gold(filepath_or_buffer, sep='\t'):
-    df = pd.read_csv(filepath_or_buffer, sep=sep)
+    df = pd.read_csv(filepath_or_buffer, sep=sep, dtype=str)
 
     gold = OrderedDict()
 
@@ -35,7 +35,7 @@ def load_gold(filepath_or_buffer, sep='\t'):
 
 
 def load_pred(filepath_or_buffer, sep='\t'):
-    df = pd.read_csv(filepath_or_buffer, sep=sep, names=('question', 'explanation'))
+    df = pd.read_csv(filepath_or_buffer, sep=sep, names=('question', 'explanation'), dtype=str)
 
     pred = OrderedDict()
 
