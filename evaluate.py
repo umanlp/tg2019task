@@ -37,6 +37,9 @@ def load_gold(filepath_or_buffer, sep='\t'):
 def load_pred(filepath_or_buffer, sep='\t'):
     df = pd.read_csv(filepath_or_buffer, sep=sep, names=('question', 'explanation'), dtype=str)
 
+    if any(df[field].isnull().all() for field in df.columns):
+        raise ValueError('invalid format of the prediction dataset, possibly the wrong separator')
+
     pred = OrderedDict()
 
     for question_id, df_explanations in df.groupby('question'):
