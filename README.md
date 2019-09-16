@@ -60,7 +60,7 @@ Important Dates
 * 09-08-2019: Evaluation end
 * 23-08-2019: System description paper deadline
 * 11-09-2019: Deadline for reviews of system description papers
-* 16-09-2019: Author notifications
+* 19-09-2019: Author notifications
 * 30-09-2019: Camera-ready description paper deadline
 * __03-11-2019/04-11-2019__: [TextGraphs-13 workshop](https://sites.google.com/view/textgraphs2019)
 
