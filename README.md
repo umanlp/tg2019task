@@ -230,13 +230,19 @@ You agree not to use or redistribute the shared task data except in the manner p
 References
 ----------
 
+* Jansen P. and Ustalov D. TextGraphs 2019 Shared Task on Multi-Hop Inference for Explanation Regeneration. *Proceedings of the Thirteenth Workshop on Graph-Based Methods for Natural Language Processing (TextGraphs-13).* Hong Kong: Association for Computational Linguistics, 2019, pp. 63&ndash;77. URL: <https://www.aclweb.org/anthology/D19-5309>
+
 ```
-@InProceedings{jansen2018worldtree,
-    author = {Peter Jansen and Elizabeth Wainwright and Steven Marmorstein and Clayton T. Morrison},
-    title = {WorldTree: A Corpus of Explanation Graphs for Elementary Science Questions supporting Multi-hop Inference},
-    booktitle = {Proceedings of the 11th International Conference on Language Resources and Evaluation (LREC)},
-    year = {2018},
-    url = {http://cognitiveai.org/wp-content/uploads/2018/02/jansen_et_al_lrec2018_worldtree_computable_explanation_corpus_8pg_cameraready.pdf},
-    url_code = {http://cognitiveai.org/explanationbank/}
+@inproceedings{Jansen:19,
+  author    = {Jansen, Peter and Ustalov, Dmitry},
+  title     = {{TextGraphs~2019 Shared Task on Multi-Hop Inference for Explanation Regeneration}},
+  booktitle = {Proceedings of the Thirteenth Workshop on Graph-Based Methods for Natural Language Processing (TextGraphs-13)},
+  year      = {2019},
+  pages     = {63--77},
+  url       = {https://www.aclweb.org/anthology/D19-5309},
+  isbn      = {978-1-950737-86-4},
+  address   = {Hong Kong},
+  publisher = {Association for Computational Linguistics},
+  language  = {english},
 }
 ```
