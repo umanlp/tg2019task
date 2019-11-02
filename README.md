@@ -230,7 +230,7 @@ You agree not to use or redistribute the shared task data except in the manner p
 References
 ----------
 
-* Jansen P. and Ustalov D. TextGraphs 2019 Shared Task on Multi-Hop Inference for Explanation Regeneration. *Proceedings of the Thirteenth Workshop on Graph-Based Methods for Natural Language Processing (TextGraphs-13).* Hong Kong: Association for Computational Linguistics, 2019, pp. 63&ndash;77. URL: <https://www.aclweb.org/anthology/D19-5309>
+* Jansen P. and Ustalov D. [TextGraphs 2019 Shared Task on Multi-Hop Inference for Explanation Regeneration](https://www.aclweb.org/anthology/D19-5309). *Proceedings of the Thirteenth Workshop on Graph-Based Methods for Natural Language Processing (TextGraphs-13).* Hong Kong: Association for Computational Linguistics, 2019, pp. 63&ndash;77.
 
 ```
 @inproceedings{Jansen:19,
